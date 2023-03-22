@@ -125,18 +125,21 @@ function gameLoop() {
 }
 
 gameLoop();
-
 document.getElementById('easy').addEventListener('click', () => {
     botSpeed = 0.1;
     currentDifficultyElement.textContent = 'Easy';
-  });
-  
-  document.getElementById('medium').addEventListener('click', () => {
+});
+
+document.getElementById('medium').addEventListener('click', () => {
     botSpeed = 0.3;
     currentDifficultyElement.textContent = 'Medium';
-  });
+});
   
-  document.getElementById('hard').addEventListener('click', () => {
+document.getElementById('hard').addEventListener('click', () => {
     botSpeed = 0.6;
     currentDifficultyElement.textContent = 'Hard';
-  });
+});
+
+document.getElementById('resetBotPosition').addEventListener('click', () => {
+    bot.y = user.y;
+});
