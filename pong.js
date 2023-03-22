@@ -6,6 +6,17 @@ const paddleHeight = 100;
 const ballRadius = 6;
 let botSpeed = 4;
 
+let userScore = 0;
+let botScore = 0;
+const userScoreElement = document.getElementById('userScore');
+const botScoreElement = document.getElementById('botScore');
+const currentDifficultyElement = document.getElementById('currentDifficulty');
+
+function updateScore() {
+    userScoreElement.textContent = userScore;
+    botScoreElement.textContent = botScore;
+  }
+
 const user = {
   x: 10,
   y: canvas.height / 2 - paddleHeight / 2,
@@ -89,11 +100,15 @@ function update() {
   }
 
   if (ball.x - ball.radius < 0) {
+    botScore++;
+    updateScore();
     ball.x = canvas.width / 2;
     ball.y = canvas.height / 2;
     ball.speed = 5;
     ball.velocityX = -ball.velocityX;
   } else if (ball.x + ball.radius > canvas.width) {
+    userScore++;
+    updateScore();
     ball.x = canvas.width / 2;
     ball.y = canvas.height / 2;
     ball.speed = 5;
@@ -112,13 +127,16 @@ function gameLoop() {
 gameLoop();
 
 document.getElementById('easy').addEventListener('click', () => {
-  botSpeed = 0.1;
-});
-
-document.getElementById('medium').addEventListener('click', () => {
+    botSpeed = 0.1;
+    currentDifficultyElement.textContent = 'Easy';
+  });
+  
+  document.getElementById('medium').addEventListener('click', () => {
     botSpeed = 0.3;
+    currentDifficultyElement.textContent = 'Medium';
   });
   
   document.getElementById('hard').addEventListener('click', () => {
     botSpeed = 0.6;
-  });  
+    currentDifficultyElement.textContent = 'Hard';
+  });
