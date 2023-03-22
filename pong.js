@@ -96,7 +96,7 @@ function update() {
     ball.velocityX = direction * ball.speed * Math.cos(angle * Math.PI / 4);
     ball.velocityY = ball.speed * Math.sin(angle * Math.PI / 4);
 
-    ball.speed += 0.1;
+    ball.speed += 0.2;
   }
 
   if (ball.x - ball.radius < 0) {
@@ -104,14 +104,14 @@ function update() {
     updateScore();
     ball.x = canvas.width / 2;
     ball.y = canvas.height / 2;
-    ball.speed = 5;
+    ball.speed = 10;
     ball.velocityX = -ball.velocityX;
   } else if (ball.x + ball.radius > canvas.width) {
     userScore++;
     updateScore();
     ball.x = canvas.width / 2;
     ball.y = canvas.height / 2;
-    ball.speed = 5;
+    ball.speed = 10;
     ball.velocityX = -ball.velocityX;
   }
 
